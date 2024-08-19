@@ -36,13 +36,14 @@ async function run() {
       const query = {
         // price: { $lt: 150, $gt: 50 }
         // db.InspirationalWomen.find({first_name: { $regex: /Harriet/i} })
-        name: {$regex: filter.search, $options: 'i'}
+        name: {$regex: filter.search, $options: 'i'},
+        category: {$regex: filter.category}
       };
 
       const options = {
         sort: {
-          price: filter.sort === 'asc' ? 1 : -1
-        }
+          price: filter.sort === 'asc' ? 1 : -1,
+        },
       };
       const cursor = mobileCollections.find(query, options);
       const result = await cursor.toArray();
