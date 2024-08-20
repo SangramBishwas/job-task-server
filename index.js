@@ -37,7 +37,8 @@ async function run() {
         // price: { $lt: 150, $gt: 50 }
         // db.InspirationalWomen.find({first_name: { $regex: /Harriet/i} })
         name: {$regex: filter.search, $options: 'i'},
-        category: {$regex: filter.category}
+        category: {$regex: filter.category},
+        brand_name: {$regex: filter.brand}
       };
 
       const options = {
